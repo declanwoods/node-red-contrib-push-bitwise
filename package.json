@@ -1,0 +1,25 @@
+{
+  "name": "node-red-contrib-push-bitwise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://declanwoods@github.com/declanwoods/node-red-contrib-push-bitwise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/declanwoods/node-red-contrib-push-bitwise/issues"
+  },
+  "homepage": "https://github.com/declanwoods/node-red-contrib-push-bitwise#readme",
+  "node-red" : {
+    "nodes": {
+      "bitwise-config": "src/bitwise-config.js",
+      "relay-out": "src/relay-out.js"
+    }
+  }
+}
