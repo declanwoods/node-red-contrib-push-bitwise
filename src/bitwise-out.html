@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  RED.nodes.registerType('bitwise-relay-out', {
+  RED.nodes.registerType('bitwise-out', {
     category: 'Push/BitWise',
     color: '#f04337',
     defaults: {
@@ -10,6 +10,9 @@
         value: "",
         type: "bitwise-config",
         required: true
+      },
+      outputtype: {
+        value: "relay"
       },
       relay: {
         value: 1,
@@ -24,12 +27,19 @@
     outputs: 0,
     icon: "file.png",
     label: function() {
-      return this.name || "Bitwise Relay Out";
+      return this.name || "Bitwise Out";
+    },
+    oneditprepare: function() {
+      $("#node-input-outputtype").on("change", (e) => {
+        $("#node-input-state-label").text(e.target.value.indexOf("pulse") === -1 ? "State" : "Duration")
+      })
     }
   });
+
+  
 </script>
 
-<script type="text/html" data-template-name="bitwise-relay-out">
+<script type="text/html" data-template-name="bitwise-out">
   <div class="form-row">
     <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
@@ -39,15 +49,25 @@
     <input type="text" id="node-input-confignode"/>
   </div>
   <div class="form-row">
+    <label for="node-input-outputtype">Type</label>
+    <select id="node-input-outputtype">
+      <option value="relay" selected>Relay</option>
+      <option value="pulse:2">Relay (Pulse)</option>
+      <option value="output">GPIO</option>
+      <option value="pulse:1">GPIO (Pulse)</option>
+      <option value="ir">IR</option>
+    </select>
+  </div>
+  <div class="form-row">
     <label for="node-input-relay">Relay</label>
     <input type="text" id="node-input-relay" placeholder="Relay Number">
   </div>
   <div class="form-row">
-    <label for="node-input-state">State</label>
+    <label for="node-input-state" id="node-input-state-label">State</label>
     <input type="text" id="node-input-state" placeholder="State">
   </div>
 </script>
 
-<script type="text/html" data-help-name="bitwise-relay-out">
+<script type="text/html" data-help-name="bitwise-out">
   <p>Sets the state of a relay</p>
 </script>
