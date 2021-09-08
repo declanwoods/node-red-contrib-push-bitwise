@@ -7,12 +7,12 @@ module.exports = function(RED) {
 
     this.on('input', function(msg, send, done) {
       const outputtype = config.outputtype;
-      const relay = msg.relay || config.relay;
+      const output = msg.output || config.output;
       const state = msg.state || msg.duration || config.state;
 
       const ipaddress = configNode.ipaddress;
       const port = configNode.port;
-      const command = `bwc:set:${outputtype}:${relay}:${state}:`;
+      const command = `bwc:set:${outputtype}:${output}:${state}:`;
 
       sendUdpCommand({ ipaddress, port, command })
 

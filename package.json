@@ -19,7 +19,8 @@
   "node-red" : {
     "nodes": {
       "bitwise-config": "src/bitwise-config.js",
-      "relay-out": "src/bitwise-out.js"
+      "bitwise-out": "src/bitwise-out.js",
+      "bitwise-in": "src/bitwise-in.js"
     }
   }
 }

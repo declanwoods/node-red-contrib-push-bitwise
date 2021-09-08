@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  RED.nodes.registerType('bitwise-out', {
+  RED.nodes.registerType('bitwise-in', {
     category: 'Push/BitWise',
     color: '#f04337',
     defaults: {
@@ -14,32 +14,23 @@
       outputtype: {
         value: "relay"
       },
-      output: {
+      input: {
         value: 1,
         validate: RED.validators.number()
       },
-      state: {
-        value: 1,
-        validate: RED.validators.number()
-      }
     },
-    inputs: 1,
-    outputs: 0,
+    inputs: 0,
+    outputs: 1,
     icon: "file.png",
     label: function() {
-      return this.name || "Bitwise Out";
-    },
-    oneditprepare: function() {
-      $("#node-input-outputtype").on("change", (e) => {
-        $("#node-input-state-label").text(e.target.value.indexOf("pulse") === -1 ? "State" : "Duration")
-      })
+      return this.name || "Bitwise In";
     }
   });
 
   
 </script>
 
-<script type="text/html" data-template-name="bitwise-out">
+<script type="text/html" data-template-name="bitwise-in">
   <div class="form-row">
     <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
@@ -49,25 +40,19 @@
     <input type="text" id="node-input-confignode"/>
   </div>
   <div class="form-row">
-    <label for="node-input-outputtype">Type</label>
-    <select id="node-input-outputtype">
+    <label for="node-input-inputtype">Type</label>
+    <select id="node-input-inputtype">
       <option value="relay" selected>Relay</option>
-      <option value="pulse:2">Relay (Pulse)</option>
       <option value="output">GPIO</option>
-      <option value="pulse:1">GPIO (Pulse)</option>
       <option value="ir">IR</option>
     </select>
   </div>
   <div class="form-row">
-    <label for="node-input-output">Output</label>
-    <input type="text" id="node-input-output" placeholder="Output Number">
-  </div>
-  <div class="form-row">
-    <label for="node-input-state" id="node-input-state-label">State</label>
-    <input type="text" id="node-input-state" placeholder="State">
+    <label for="node-input-input">Input</label>
+    <input type="text" id="node-input-input" placeholder="Input Number">
   </div>
 </script>
 
 <script type="text/html" data-help-name="bitwise-out">
-  <p>Sets the state of an output</p>
+  <p>Gets the state of an input</p>
 </script>
