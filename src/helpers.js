@@ -31,10 +31,12 @@ function sendTcpCommand({ command, ipaddress, port }) {
     
     client.on('data', function(data) {
       const body = data.toString('utf-8');
-      console.log('Received: ' + body);
-      client.write('bwc:tcpclose:\n');
-      client.destroy();
-      return resolve(body);
+      if (body.startsWith("bwr:")) {
+        console.log('Received: ' + body);
+        client.write('bwc:tcpclose:\n');
+        client.destroy();
+        return resolve(body)
+      };
     });
 
     client.on('error', function(err) {
