@@ -6,13 +6,12 @@ module.exports = function(RED) {
     const configNode = RED.nodes.getNode(config.confignode)
 
     this.on('input', function(msg, send, done) {
-      const outputtype = config.outputtype;
-      const output = msg.output || config.output;
-      const state = msg.state || msg.duration || config.state;
+      const inputtype = config.inputtype;
+      const input = msg.input || config.input;
 
       const ipaddress = configNode.ipaddress;
       const port = configNode.port;
-      const command = `bwc:set:${outputtype}:${output}:${state}:`;
+      const command = `bwc:get:${inputtype}:${input}:`;
 
       const response = sendTcpCommand({ ipaddress, port, command });
 

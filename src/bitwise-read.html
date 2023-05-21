@@ -14,9 +14,6 @@
       inputtype: {
         value: "relay"
       },
-      readtype: {
-        value: "digital"
-      },
       input: {
         value: 1,
         validate: RED.validators.number()
@@ -46,15 +43,9 @@
     <label for="node-input-inputtype">Type</label>
     <select id="node-input-inputtype">
       <option value="relay" selected>Relay</option>
-      <option value="output">GPIO</option>
+      <option value="input">GPIO</option>
+      <option value="ad">GPIO Analog</option>
       <option value="ir">IR</option>
-    </select>
-  </div>
-  <div class="form-row">
-    <label for="node-input-readtype">Read type</label>
-    <select id="node-input-readtype">
-      <option value="digital" selected>Digital</option>
-      <option value="analog">Analog</option>
     </select>
   </div>
   <div class="form-row">
