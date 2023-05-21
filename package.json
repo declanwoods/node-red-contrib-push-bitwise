@@ -20,7 +20,8 @@
     "nodes": {
       "bitwise-config": "src/bitwise-config.js",
       "bitwise-out": "src/bitwise-out.js",
-      "bitwise-in": "src/bitwise-in.js"
+      "bitwise-in": "src/bitwise-in.js",
+      "bitwise-read": "src/bitwise-read.js"
     }
   }
 }

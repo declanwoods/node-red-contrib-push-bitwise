@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  RED.nodes.registerType('bitwise-in', {
+  RED.nodes.registerType('bitwise-read', {
     category: 'Push/BitWise',
     color: '#f04337',
     defaults: {
@@ -11,26 +11,29 @@
         type: "bitwise-config",
         required: true
       },
-      outputtype: {
+      inputtype: {
         value: "relay"
+      },
+      readtype: {
+        value: "digital"
       },
       input: {
         value: 1,
         validate: RED.validators.number()
       },
     },
-    inputs: 0,
+    inputs: 1,
     outputs: 1,
     icon: "file.png",
     label: function() {
-      return this.name || "Bitwise In";
+      return this.name || "Bitwise Read";
     }
   });
 
   
 </script>
 
-<script type="text/html" data-template-name="bitwise-in">
+<script type="text/html" data-template-name="bitwise-read">
   <div class="form-row">
     <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
     <input type="text" id="node-input-name" placeholder="Name">
@@ -48,11 +51,18 @@
     </select>
   </div>
   <div class="form-row">
+    <label for="node-input-readtype">Read type</label>
+    <select id="node-input-readtype">
+      <option value="digital" selected>Digital</option>
+      <option value="analog">Analog</option>
+    </select>
+  </div>
+  <div class="form-row">
     <label for="node-input-input">Input</label>
     <input type="text" id="node-input-input" placeholder="Input Number">
   </div>
 </script>
 
-<script type="text/html" data-help-name="bitwise-in">
-  <p>Gets the state of an input</p>
+<script type="text/html" data-help-name="bitwise-read">
+  <p>Gets the state of an input on trigger</p>
 </script>
