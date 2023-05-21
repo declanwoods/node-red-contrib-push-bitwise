@@ -26,14 +26,14 @@ function sendTcpCommand({ command, ipaddress, port }) {
   return new Promise((resolve, reject) => {
     const client = new net.Socket();
     client.connect(port, ipaddress, function() {
-      client.write(command + '\n');
+      client.write(command + '\r\n');
     });
     
     client.on('data', function(data) {
       const body = data.toString('utf-8');
       if (body.startsWith("bwr:")) {
         console.log('Received: ' + body);
-        client.write('bwc:tcpclose:\n');
+        client.write('bwc:tcpclose:\r\n');
         client.destroy();
         return resolve(body)
       };
