@@ -5,7 +5,7 @@ module.exports = function(RED) {
     RED.nodes.createNode(this, config);
     const configNode = RED.nodes.getNode(config.confignode)
 
-    this.on('input', function(msg, send, done) {
+    this.on('input', async function(msg, send, done) {
       const inputtype = config.inputtype;
       const input = msg.input || config.input;
 
@@ -13,7 +13,7 @@ module.exports = function(RED) {
       const port = configNode.tcpport;
       const command = `bwc:get:${inputtype}:${input}:`;
 
-      const response = sendTcpCommand({ ipaddress, port, command });
+      const response = await sendTcpCommand({ ipaddress, port, command });
 
       send(response);
 

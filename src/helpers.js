@@ -35,6 +35,11 @@ function sendTcpCommand({ command, ipaddress, port }) {
       client.destroy();
       return resolve(body);
     });
+
+    client.on('error', function(err) {
+      console.log('Connection errored');
+      return reject(err);
+    })
     
     client.on('close', function() {
       console.log('Connection closed');
