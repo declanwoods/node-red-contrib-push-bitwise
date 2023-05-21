@@ -26,6 +26,7 @@ function sendTcpCommand({ command, ipaddress, port }) {
   return new Promise((resolve, reject) => {
     const client = new net.Socket();
     client.connect(port, ipaddress, function() {
+      console.log(`Connected to ${ipaddress}:${port}`)
       client.write(command + '\r\n');
     });
     
