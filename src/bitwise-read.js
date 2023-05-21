@@ -15,7 +15,7 @@ module.exports = function(RED) {
 
       const response = await sendTcpCommand({ ipaddress, port, command });
 
-      send(response);
+      send({ payload: response });
 
       if (done) {
         done()

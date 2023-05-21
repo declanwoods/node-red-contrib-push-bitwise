@@ -6,7 +6,7 @@ module.exports = function(RED) {
     const configNode = RED.nodes.getNode(config.confignode)
 
     const outputtype = config.outputtype;
-    const input = msg.input || config.input;
+    const input = config.input;
 
     const ipaddress = configNode.ipaddress;
     const port = configNode.udpport;

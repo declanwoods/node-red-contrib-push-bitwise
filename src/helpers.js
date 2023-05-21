@@ -42,8 +42,7 @@ function sendTcpCommand({ command, ipaddress, port }) {
     })
     
     client.on('close', function() {
-      console.log('Connection closed');
-      return reject("Closed");
+      return;
     });
   });
 }
