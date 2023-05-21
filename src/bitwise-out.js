@@ -11,7 +11,7 @@ module.exports = function(RED) {
       const state = msg.state || msg.duration || config.state;
 
       const ipaddress = configNode.ipaddress;
-      const port = configNode.port;
+      const port = configNode.udpport;
       const command = `bwc:set:${outputtype}:${output}:${state}:`;
 
       sendUdpCommand({ ipaddress, port, command })

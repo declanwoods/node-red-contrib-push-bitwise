@@ -5,7 +5,8 @@ module.exports = function(RED) {
 
     node = this
     node.ipaddress = config.ipaddress
-    node.port = config.port
+    node.tcpport = config.tcpport
+    node.udpport = config.udpport
   }
 
   RED.nodes.registerType('bitwise-config', BitwiseConfigNode)

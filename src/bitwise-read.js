@@ -10,7 +10,7 @@ module.exports = function(RED) {
       const input = msg.input || config.input;
 
       const ipaddress = configNode.ipaddress;
-      const port = configNode.port;
+      const port = configNode.tcpport;
       const command = `bwc:get:${inputtype}:${input}:`;
 
       const response = sendTcpCommand({ ipaddress, port, command });

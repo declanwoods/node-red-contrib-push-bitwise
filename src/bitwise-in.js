@@ -9,7 +9,7 @@ module.exports = function(RED) {
     const input = msg.input || config.input;
 
     const ipaddress = configNode.ipaddress;
-    const port = configNode.port;
+    const port = configNode.udpport;
     const command = `bwc:get:${outputtype}:${input}:`;
   }
 
